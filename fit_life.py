@@ -31,9 +31,8 @@ def get_water_needed(weight):
 def print_result(name, age, weight, height):
     """Вывод результата вычислений на экран"""
     print(f"\nОтчет для пользователя: {user_name} ({user_age} лет)")
-    print(f"Твой Индекс Массы Тела: {get_bmi(user_weight, user_height)} кг/м²")
-    print(f"Рекомендуемая норма воды: "
-          f"{get_water_needed(user_weight)} л. в день\n")
+    print(f"Индекс Массы Тела: {get_bmi(user_weight, user_height)} кг/м²")
+    print(f"Норма воды: {get_water_needed(user_weight)} л. в день")
 
 
 print_result(user_name, user_age, user_weight, user_height)
