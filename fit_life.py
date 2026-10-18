@@ -1,14 +1,39 @@
 # Проект FitLife - MVP версия 1.0
 
 
-# 1. Знакомство
+WATER_PER_KG = 30
+ML_IN_LITER = 1000
+
+
+# 2. Сбор и проверка корректности ввода данных
 user_name = input('Ведите ваше имя: ')
-user_age = int(input('Сколько вам полных лет: '))
-
-
-# 2. Сбор данных
-user_weight = float(input('Введите ваш вес в килограммах: '))
-user_height = float(input('Введите ваш рост в метрах (например, 1.75): '))
+while True:
+    try:
+        user_age = int(input('Сколько вам полных лет: '))
+        if 100 > user_age > 0:
+            break
+        else:
+            print('Значение должно быть от 0 и до 100')
+    except ValueError:
+        print('Введите корректное значение')
+while True:
+    try:
+        user_weight = float(input('Введите ваш вес в килограммах: '))
+        if 250 > user_weight > 0:
+            break
+        else:
+            print('Значение должно быть от 0 и до 250 киллограмм')
+    except ValueError:
+        print('Введите корректное значение')
+while True:
+    try:
+        user_height = float(input('Введите ваш рост в метрах : '))
+        if 2.30 > user_height > 0.40:
+            break
+        else:
+            print('Значение должно быть от 0.40 мета и до 2.30 метров')
+    except ValueError:
+        print('Введите корректное значение (например, 1.75)')
 
 
 # 3. Логика расчетов
@@ -22,21 +47,17 @@ def get_bmi(weight, height):
 # Подсчет воды: вес * 30 мл
 def get_water_needed(weight):
     """Возвращает расчет потребления воды"""
-    WATER_PER_KG = 30
-    water_ml = (weight * WATER_PER_KG) / 1000
+    water_ml = (weight * WATER_PER_KG) / ML_IN_LITER
     return round(water_ml, 1)
 
 
 # 4. Вывод результата
-def print_result(name, age, weight, height):
-    """Вывод результата вычислений на экран"""
-    bmi = get_bmi(weight, height)
-    water_liters = get_water_needed(weight)
-    print(f"\nОтчет для пользователя: {name} ({age} лет)")
-    print(f"Индекс Массы Тела: {bmi} кг/м²")
-    print(f"Норма воды: {water_liters} л. в день")
 
+bmi = get_bmi(user_weight, user_height)
+water_liters = get_water_needed(user_weight)
+print(f"\nОтчет для пользователя: {user_name} ({user_age} лет)")
+print(f"Индекс Массы Тела: {bmi} кг/м²")
+print(f"Норма воды: {water_liters} л. в день")
 
-print_result(user_name, user_age, user_weight, user_height)
 
 print("Расчет окончен. Будьте здоровы!")
