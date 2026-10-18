@@ -1,8 +1,15 @@
 # Проект FitLife - MVP версия 1.0
 
 
+# 1. Константы для проекта
 WATER_PER_KG = 30
 ML_IN_LITER = 1000
+AGE_MIN = 0
+AGE_MAX = 100
+WEIGHT_MIN = 0
+WEIGHT_MAX = 250
+HEIGHT_MIN = 0.40
+HEIGHT_MAX = 2.30
 
 
 # 2. Сбор и проверка корректности ввода данных
@@ -10,28 +17,30 @@ user_name = input('Ведите ваше имя: ')
 while True:
     try:
         user_age = int(input('Сколько вам полных лет: '))
-        if 100 > user_age > 0:
+        if AGE_MAX > user_age > AGE_MIN:
             break
         else:
-            print('Значение должно быть от 0 и до 100')
+            print(f'Значение должно быть от {AGE_MIN} и до {AGE_MAX}')
     except ValueError:
         print('Введите корректное значение')
 while True:
     try:
         user_weight = float(input('Введите ваш вес в килограммах: '))
-        if 250 > user_weight > 0:
+        if WEIGHT_MAX > user_weight > WEIGHT_MIN:
             break
         else:
-            print('Значение должно быть от 0 и до 250 киллограмм')
+            print(f'Значение должно быть от '
+                  f'{WEIGHT_MIN} и до {WEIGHT_MAX} киллограмм')
     except ValueError:
         print('Введите корректное значение')
 while True:
     try:
         user_height = float(input('Введите ваш рост в метрах : '))
-        if 2.30 > user_height > 0.40:
+        if HEIGHT_MAX > user_height > HEIGHT_MIN:
             break
         else:
-            print('Значение должно быть от 0.40 мета и до 2.30 метров')
+            print(f'Значение должно быть от '
+                  f'{HEIGHT_MIN} метра и до {HEIGHT_MAX} метров')
     except ValueError:
         print('Введите корректное значение (например, 1.75)')
 
